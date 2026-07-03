@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { app } from './app.ts';
 
 const PORT = 3000;
