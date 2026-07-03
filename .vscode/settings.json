@@ -13,10 +13,12 @@
 
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.acceptSuggestionOnCommitCharacter": false
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.acceptSuggestionOnCommitCharacter": false
 	},
 	"[json]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
