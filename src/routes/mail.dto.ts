@@ -2,7 +2,7 @@ import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-valid
 
 import { SendMailBody } from './mail.interface.ts';
 
-class SendMailDto implements SendMailBody {
+export class SendMailDto implements SendMailBody {
 	@IsString()
 	@IsNotEmpty({ message: `O campo 'nome' é obrigatório.` })
 	@MinLength(4, { message: `O campo 'nome' deve ter pelo menos 4 caracteres.` })
@@ -24,5 +24,3 @@ class SendMailDto implements SendMailBody {
 	@MaxLength(10000, { message: `A mensagem está muito longa.` })
 	message!: string;
 }
-
-export { SendMailDto };
