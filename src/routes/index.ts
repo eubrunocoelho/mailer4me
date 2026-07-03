@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { mailRouter } from './mail.routes.js';
+import { mailRouter } from './mail.routes.ts';
 
 const router = Router();
 
