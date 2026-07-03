@@ -8,4 +8,11 @@ mailRouter.get('/', (_req: Request, res: Response) => {
 	});
 });
 
+mailRouter.post('/send', (req: Request, res: Response) => {
+	res.status(201).json({
+		message: 'Dados recebidos com sucesso!',
+		data: req.body,
+	});
+});
+
 export { mailRouter };
