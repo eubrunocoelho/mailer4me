@@ -1,26 +1,13 @@
-import { type Request, type Response, Router } from 'express';
+import { Router } from 'express';
 
-import { validateDto } from '../middlewares/validate.middleware.ts';
-import { MailService } from '../services/mail/mail.service.ts';
-import { SendMailDto } from './mail.dto.ts';
+import { MailController } from '../controllers/mail.controller.ts';
+import { SendMailDto } from '../dtos/send-mail.dto.ts';
+import { ValidateDtoMiddleware } from '../middlewares/validate-dto.middleware.ts';
 
 const mailRouter: Router = Router();
+const validateSendMailDto = new ValidateDtoMiddleware(SendMailDto);
 
-mailRouter.get('/', (_req: Request, res: Response) => {
-	res.json({
-		message: 'What are you doing here?',
-	});
-});
-
-mailRouter.post('/send', validateDto(SendMailDto), async (req: Request, res: Response) => {
-	const mailData = req.body as SendMailDto;
-
-	await MailService.sendMail(mailData);
-
-	res.status(201).json({
-		message: 'Dados recebidos com sucesso!',
-		data: mailData,
-	});
-});
+mailRouter.get('/', MailController.index);
+mailRouter.post('/send', validateSendMailDto.handle, MailController.send);
 
 export { mailRouter };

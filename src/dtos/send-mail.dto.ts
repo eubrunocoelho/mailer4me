@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 
-import { SendMailBody } from './mail.interface.ts';
+import { SendMailBody } from '../interfaces/send-mail-body.interface.ts';
 
 export class SendMailDto implements SendMailBody {
 	@IsString()

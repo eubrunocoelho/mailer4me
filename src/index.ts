@@ -5,5 +5,5 @@ import { app } from './app.ts';
 const PORT = 3000;
 
 app.listen(PORT, () => {
-	console.log(`Server is listening on port ${PORT}`);
+	console.log(`Server is listening on ${PORT}`);
 });
