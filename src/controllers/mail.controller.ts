@@ -12,11 +12,18 @@ export class MailController {
 
 	static async send(req: Request, res: Response): Promise<void> {
 		const mailData = req.body as SendMailDto;
+		const result = await MailService.sendMail(mailData);
 
-		await MailService.sendMail(mailData);
+		if (!result.success) {
+			res.status(502).json({
+				message: result.message ?? 'Falha ao enviar e-mail.',
+			});
+
+			return;
+		}
 
 		res.status(201).json({
-			message: 'Dados recebidos com sucesso!',
+			message: 'E-mail enviado com sucesso!',
 			data: mailData,
 		});
 	}

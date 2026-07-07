@@ -1,10 +1,27 @@
 import { SendMailDto } from '../dtos/send-mail.dto.ts';
 import { MailServiceResponse } from '../interfaces/mail-service-response.interface.ts';
+import { MailerProvider } from '../providers/mailer.provider.ts';
 
 export class MailService {
 	static async sendMail(data: SendMailDto): Promise<MailServiceResponse> {
-		console.log(`Recebendo e-mail de ${data.name}...`);
+		const transporter = MailerProvider.getTransporter();
 
-		return { success: true };
+		try {
+			await transporter.sendMail({
+				from: process.env.SMTP_FROM,
+				to: process.env.SMTP_FROM,
+				subject: data.message,
+				text: data.message,
+			});
+
+			return { success: true };
+		} catch (error) {
+			console.error('Falha ao enviar o e-mail:', error);
+
+			return {
+				success: false,
+				message: 'Falha ao enviar o e-mail',
+			};
+		}
 	}
 }
