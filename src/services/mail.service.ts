@@ -10,7 +10,7 @@ export class MailService {
 			await transporter.sendMail({
 				from: process.env.SMTP_FROM,
 				to: process.env.SMTP_FROM,
-				subject: data.message,
+				subject: data.subject,
 				text: data.message,
 			});
 

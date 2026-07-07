@@ -15,7 +15,7 @@ export class MailerProvider {
 				},
 			});
 
-			MailerProvider.instance.verify((error, success) => {
+			MailerProvider.instance.verify((error, _success) => {
 				if (error) console.error('Erro na configuração do SMTP:', error);
 				else console.log('Servidor de e-mail pronto para uso.');
 			});
