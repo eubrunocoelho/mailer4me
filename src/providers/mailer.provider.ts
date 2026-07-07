@@ -14,6 +14,11 @@ export class MailerProvider {
 					pass: process.env.SMTP_PASS,
 				},
 			});
+
+			MailerProvider.instance.verify((error, success) => {
+				if (error) console.error('Erro na configuração do SMTP:', error);
+				else console.log('Servidor de e-mail pronto para uso.');
+			});
 		}
 
 		return MailerProvider.instance;
