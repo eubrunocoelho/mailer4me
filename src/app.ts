@@ -9,6 +9,7 @@ import { router } from './routes/index.ts';
  * Instância principal da aplicação Express.
  */
 const app = express();
+app.set('trust proxy', 1);
 
 EventRegistry.registerListeners();
 
