@@ -6,10 +6,7 @@ export class SendConfirmationListener {
 	static async handle(payload: MailSentEvent): Promise<void> {
 		const transporter = MailerProvider.getTransporter();
 
-		const html = TemplateRendererProvider.render('mail-confirmation', {
-			name: payload.name,
-			subject: payload.subject,
-		});
+		const html = TemplateRendererProvider.render('mail-confirmation', { payload });
 
 		try {
 			await transporter.sendMail({
