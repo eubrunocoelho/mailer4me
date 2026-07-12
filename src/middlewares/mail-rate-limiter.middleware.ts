@@ -1,4 +1,4 @@
-import rateLimit, { type RateLimitRequestHandler } from 'express-rate-limit';
+import { rateLimit, type RateLimitRequestHandler } from 'express-rate-limit';
 
 /**
  * Limita o número de requisições por IP na rota de envio de e-mail.
