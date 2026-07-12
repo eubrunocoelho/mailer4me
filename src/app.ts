@@ -9,8 +9,11 @@ const app = express();
 
 EventRegistry.registerListeners();
 
-app.use(CorsMiddleware.handle);
-app.use(express.json({ limit: '10kb' }));
+if (CorsMiddleware.enabled) {
+	app.use(CorsMiddleware.handle);
+}
+
+app.use(express.json({ limit: '100kb' }));
 app.use(router);
 app.use(JsonErrorMiddleware.handle);
 
