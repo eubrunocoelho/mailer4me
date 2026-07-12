@@ -5,7 +5,17 @@ import { MailServiceResponse } from '../interfaces/mail-service-response.interfa
 import { MailerProvider } from '../providers/mailer.provider.ts';
 import { TemplateRendererProvider } from '../providers/template-renderer.provider.ts';
 
+/**
+ * Regra de negócio do envio de e-mail: monta e envia a mensagem principal (para `STMP_FROM`) e
+ * dispara o evento de confirmação em caso de sucesso.
+ */
 export class MailService {
+	/**
+	 * Envia o e-mail com os dados do formulário de contato.
+	 *
+	 * @param data - Dados já validados pelo {@link ValidateDtoMiddleware}
+	 * @returns `{ success: true }` em caso de sucesso, ou `{ success: false, message }` em caso de falha
+	 */
 	static async sendMail(data: SendMailDto): Promise<MailServiceResponse> {
 		const transporter = MailerProvider.getTransporter();
 

@@ -3,6 +3,9 @@ import { type Request, type Response } from 'express';
 import { SendMailDto } from '../dtos/send-mail.dto.ts';
 import { MailService } from '../services/mail.service.ts';
 
+/**
+ * Controller responsável pelas rotas do domínio de e-mail.
+ */
 export class MailController {
 	static index(_req: Request, res: Response): void {
 		res.json({

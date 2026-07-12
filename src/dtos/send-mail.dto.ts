@@ -2,6 +2,12 @@ import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-valid
 
 import { SendMailBody } from '../interfaces/send-mail-body.interface.ts';
 
+/**
+ * DTO de entrada da rota `POST /mail/send`.
+ *
+ * @remarks
+ * Validado automaticamente pelo {@link ValidateDtoMiddleware} antes de chegar no {@link MailController}.
+ */
 export class SendMailDto implements SendMailBody {
 	@IsString()
 	@IsNotEmpty({ message: `O campo 'nome' é obrigatório.` })

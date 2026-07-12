@@ -1,8 +1,16 @@
 import nodemailer, { type Transporter } from 'nodemailer';
 
+/**
+ * Fornece uma única instância (singleton) do transporter do Nodemailer,
+ * configurada a partir de variáveis de ambiente `SMTP_*`.
+ */
 export class MailerProvider {
 	private static instance: Transporter | undefined;
 
+	/**
+	 * Retorna o transporter SMTP, criando-o na primeira chamada e
+	 * reaproveitando a mesma conexão configurada nas chamadas seguintes.
+	 */
 	static getTransporter(): Transporter {
 		if (!MailerProvider.instance) {
 			MailerProvider.instance = nodemailer.createTransport({
